@@ -110,6 +110,7 @@ public class CardViewController {
         /*
           write in JSON file
          */
+        Logger.debug("Scores being saved into a json file");
         try (FileWriter file = new FileWriter("file.json")) {
             file.write(gameList.toJSONString());
             file.flush();
@@ -120,6 +121,7 @@ public class CardViewController {
 
     @FXML
     public void scoreBoardPushed(ActionEvent event) throws IOException {
+        Logger.debug("Scene switches to Score Board");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/ScoreBoard.fxml"));
         stage.setScene(new Scene(root));
