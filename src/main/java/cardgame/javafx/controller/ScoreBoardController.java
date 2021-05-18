@@ -26,7 +26,7 @@ public class ScoreBoardController {
 
     private static void parseGameObject(JSONObject game)
     {
-        //Get gamee object within list
+        //Get game object within list
         JSONObject gameObject = (JSONObject) game.get("game");
 
         //Get game playerOneResult

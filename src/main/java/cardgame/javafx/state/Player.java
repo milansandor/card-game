@@ -14,6 +14,11 @@ public class Player {
         return cardsOfHand;
     }
 
+    /**
+     * This method will remove a card from a List at
+     * @param index
+     * @return a Card from a list of cards
+     */
     public Card playACard(int index)
     {
         Card playedCard = cardsOfHand.get(index);
