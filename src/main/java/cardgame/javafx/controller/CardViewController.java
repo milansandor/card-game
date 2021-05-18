@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import org.tinylog.Logger;
 
 import javafx.scene.control.TextField;
 
@@ -65,19 +66,19 @@ public class CardViewController {
 
 
         while (player1.getCardsOfHand().size() != 0 && player2.getCardsOfHand().size() != 0) {
-            System.out.println("Size: "+player1.getCardsOfHand().size());
             Card playedByPlayer1Card = player1.playACard(0);
-            System.out.println("played card by player1: "+playedByPlayer1Card);
+            Logger.debug("Player one played the card: {}", playedByPlayer1Card);
+
             Card playedByPlayer2Card = player2.playACard(0);
-            System.out.println("played card by player2: "+playedByPlayer2Card);
+            Logger.debug("Player two played the card: {}", playedByPlayer2Card);
             if (playedByPlayer1Card.getCardValue() > playedByPlayer2Card.getCardValue()) {
                 // 1 point for player1
                 player1Points++;
-                System.out.println(playedByPlayer1Card.getCardValue());
+                Logger.debug("Player One won his {} match with a card value of {}",player1Points,playedByPlayer1Card.getCardValue());
             }
             if (playedByPlayer1Card.getCardValue() < playedByPlayer2Card.getCardValue()) {
                 player2Points++;
-                System.out.println(playedByPlayer2Card.getCardValue());
+                Logger.debug("Player One won his {} match with a card value of {}",player2Points,playedByPlayer2Card.getCardValue());
             }
         }
 
