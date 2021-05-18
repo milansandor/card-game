@@ -13,6 +13,9 @@
             <email>milansandor@mailbox.unideb.hu</email>
         </developer>
     </developers>
+    <scm>
+        <developerConnection>scm:git:https://github.com/milansandor/card-game.git</developerConnection>
+    </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
