@@ -16,7 +16,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ScoreBoardController {
@@ -53,6 +52,25 @@ public class ScoreBoardController {
     @FXML
     private void initialize() {
         JSONParser jsonParser = new JSONParser();
+        extracted(jsonParser);
+
+        for (int i = 0; i < playerOneScores.size() && i < playerTwoScores.size(); i++) {
+            scoreTable.getItems().add(i);
+        }
+
+        playerOneColumn.setCellValueFactory(cellData -> {
+            Integer rowIndex = cellData.getValue();
+            return new ReadOnlyIntegerWrapper(playerOneScores.get(rowIndex));
+        });
+
+        playerTwoColumn.setCellValueFactory(cellData -> {
+            Integer rowIndex = cellData.getValue();
+            return new ReadOnlyIntegerWrapper(playerTwoScores.get(rowIndex));
+        });
+
+    }
+
+    private void extracted(JSONParser jsonParser) {
         try (FileReader reader = new FileReader("file.json"))
         {
             //Read JSON file
@@ -71,21 +89,6 @@ public class ScoreBoardController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-        for (int i = 0; i < playerOneScores.size() && i < playerTwoScores.size(); i++) {
-            scoreTable.getItems().add(i);
-        }
-
-        playerOneColumn.setCellValueFactory(cellData -> {
-            Integer rowIndex = cellData.getValue();
-            return new ReadOnlyIntegerWrapper(playerOneScores.get(rowIndex));
-        });
-
-        playerTwoColumn.setCellValueFactory(cellData -> {
-            Integer rowIndex = cellData.getValue();
-            return new ReadOnlyIntegerWrapper(playerTwoScores.get(rowIndex));
-        });
-
     }
 
     @FXML
